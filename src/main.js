@@ -7,6 +7,7 @@ const main = function () {
   const file1Content = fs.readFileSync('./resources/match_small_1.txt', 'utf-8');
   const file2Content = fs.readFileSync('./resources/match_small_2.txt', 'utf-8');
 
+  let start = performance.now();
   const table1 = parseFirstList(file1Content);
   const table2 = parseSecondList(file2Content);
 

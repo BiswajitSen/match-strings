@@ -1,24 +1,12 @@
 const parseFirstList = function (list) {
-  return list.split('\n').reduce((table, word) => {
-    const key = word.slice(-4);
-    table[key] = word;
-    return table;
-  }, {});
+  const listInfo = list.trim().split('\n');
+  return Object.fromEntries(listInfo.map((x) => [x.slice(-4), x]));
 };
 
-const parseSecondList = function (list) {
-  return list.split('\n').reduce((table, word) => {
-    const key = word.slice(0, 4);
-    table[key] = word.slice(4);
-    return table;
-  }, {});
-};
+const parseSecondList = (list) => list.trim().split('\n');
 
 const joinMatchedPairs = function (table1, table2) {
-  return Object.keys(table1).reduce((joinedList, curr) => {
-    joinedList.push(table1[curr] + (table2[curr]));
-    return joinedList;
-  }, []).join('\n');
+  return table2.map((word) => table1[word.slice(0, 4)] + word.slice(4));
 };
 
 exports.parseFirstList = parseFirstList;

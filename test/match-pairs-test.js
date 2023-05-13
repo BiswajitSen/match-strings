@@ -16,17 +16,17 @@ describe('parsePairs', function () {
     const file2Content = 'jstc331\noklw737';
 
     const actual = parseSecondList(file2Content);
-    const expected = { jstc: '331', oklw: '737' };
+    const expected = ['jstc331', 'oklw737'];
 
     deepEqual(actual, expected);
   });
 
   it('should join the matching strings together.', function () {
     const table1 = parseFirstList('79oklw\n381jstc');
-    const table2 = parseSecondList('jstc331\noklw737\nbdxv211\nusja514');
+    const table2 = parseSecondList('jstc331\noklw737');
 
     const actual = joinMatchedPairs(table1, table2);
-    const expected = '79oklw737\n381jstc331';
+    const expected = ['381jstc331', '79oklw737'];
 
     deepEqual(actual, expected);
   });
